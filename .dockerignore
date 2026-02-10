@@ -1,0 +1,67 @@
+# Git
+.git
+.gitignore
+.github
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Documentation
+README.md
+DOCKER.md
+JWT.md
+SECURITY.md
+INSTALL.md
+*.md
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+backups/
+*.backup
+*.bak
+
+# Env files (usar variables de Docker)
+.env
+.env.*
+
+# Composer
+vendor/
+composer.lock
+
+# NPM
+node_modules/
+package-lock.json
+
+# Tests
+tests/
+phpunit.xml
+
+# Scripts (no necesarios en imagen)
+scripts/
+
+# Docker files (no necesarios dentro de la imagen)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Uploads y temp (se monta como volumen)
+uploads/
+tmp/
+temp/
+cache/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
