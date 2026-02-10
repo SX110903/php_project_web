@@ -14,7 +14,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/register.php" method="POST" class="auth-form" id="registerForm">
+        <form action="<?= $routeBase ?>/register.php" method="POST" class="auth-form" id="registerForm">
             <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
 
             <div class="form-group">
@@ -83,7 +83,7 @@
             </div>
 
             <div class="form-links">
-                <a href="/login.php">Ya tienes cuenta? Inicia sesion</a>
+                <a href="<?= $routeBase ?>/login.php">Ya tienes cuenta? Inicia sesion</a>
             </div>
         </form>
     </div>

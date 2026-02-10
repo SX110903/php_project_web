@@ -7,12 +7,12 @@
             <h2>Secure App</h2>
         </div>
         <ul class="nav-menu">
-            <li><a href="/dashboard.php" class="active">Dashboard</a></li>
-            <li><a href="/profile.php">Mi Perfil</a></li>
+            <li><a href="<?= $routeBase ?>/dashboard.php" class="active">Dashboard</a></li>
+            <li><a href="<?= $routeBase ?>/profile.php">Mi Perfil</a></li>
             <?php if ($current_user && $current_user->hasRole('admin')): ?>
-                <li><a href="/admin.php">Administracion</a></li>
+                <li><a href="<?= $routeBase ?>/admin.php">Administracion</a></li>
             <?php endif; ?>
-            <li><a href="/logout.php">Cerrar Sesion</a></li>
+            <li><a href="<?= $routeBase ?>/logout.php">Cerrar Sesion</a></li>
         </ul>
     </nav>
 

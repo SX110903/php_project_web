@@ -7,10 +7,10 @@
             <h2>Secure App</h2>
         </div>
         <ul class="nav-menu">
-            <li><a href="/dashboard.php">Dashboard</a></li>
-            <li><a href="/profile.php">Mi Perfil</a></li>
-            <li><a href="/admin.php" class="active">Administracion</a></li>
-            <li><a href="/logout.php">Cerrar Sesion</a></li>
+            <li><a href="<?= $routeBase ?>/dashboard.php">Dashboard</a></li>
+            <li><a href="<?= $routeBase ?>/profile.php">Mi Perfil</a></li>
+            <li><a href="<?= $routeBase ?>/admin.php" class="active">Administracion</a></li>
+            <li><a href="<?= $routeBase ?>/logout.php">Cerrar Sesion</a></li>
         </ul>
     </nav>
 
@@ -38,8 +38,8 @@
                 <div class="info-card">
                     <h2>Acciones Rapidas</h2>
                     <div class="action-grid">
-                        <a class="btn btn-primary btn-block" href="/api.php?path=users">Ver usuarios (API)</a>
-                        <a class="btn btn-outline btn-block" href="/dashboard.php">Volver al dashboard</a>
+                        <a class="btn btn-primary btn-block" href="<?= $routeBase ?>/api.php?path=users">Ver usuarios (API)</a>
+                        <a class="btn btn-outline btn-block" href="<?= $routeBase ?>/dashboard.php">Volver al dashboard</a>
                     </div>
                 </div>
             </div>

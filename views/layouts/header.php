@@ -7,12 +7,13 @@
     <meta name="csrf-token" content="<?= $csrf_token ?? '' ?>">
     <?php
     $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
-    $assetBase = '';
+    $routeBase = '';
     $publicPos = strpos($scriptName, '/public/');
 
     if ($publicPos !== false) {
-        $assetBase = substr($scriptName, 0, $publicPos + 7);
+        $routeBase = substr($scriptName, 0, $publicPos + 7);
     }
+    $assetBase = $routeBase;
     ?>
     <title><?= $title ?? 'Secure App' ?></title>
     <link rel="stylesheet" href="<?= $assetBase ?>/css/main.css">
@@ -20,4 +21,7 @@
     <?= $extraCss ?? '' ?>
 </head>
 <body>
+    <script>
+        window.APP_BASE = <?= json_encode($routeBase) ?>;
+    </script>
     <div class="wrapper">

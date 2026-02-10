@@ -4,6 +4,7 @@
 class App {
     constructor() {
         this.csrfToken = this.getCsrfToken();
+        this.appBase = this.getAppBase();
         this.init();
     }
 
@@ -18,16 +19,38 @@ class App {
         return meta ? meta.getAttribute('content') : '';
     }
 
+    getAppBase() {
+        const rawBase = window.APP_BASE || '';
+        if (typeof rawBase !== 'string' || rawBase === '/') {
+            return '';
+        }
+
+        return rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+    }
+
+    toRoute(path) {
+        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+        return `${this.appBase}${normalizedPath}`;
+    }
+
     initAlerts() {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach((alert) => {
+            if (alert.dataset.bound === '1') {
+                return;
+            }
+
+            alert.dataset.bound = '1';
             const closeBtn = document.createElement('button');
             closeBtn.className = 'alert-close';
             closeBtn.setAttribute('type', 'button');
             closeBtn.setAttribute('aria-label', 'Cerrar alerta');
             closeBtn.textContent = 'x';
             closeBtn.addEventListener('click', () => this.closeElement(alert));
-            alert.appendChild(closeBtn);
+
+            if (!alert.querySelector('.alert-close')) {
+                alert.appendChild(closeBtn);
+            }
 
             setTimeout(() => this.closeElement(alert), 5000);
         });
@@ -67,7 +90,7 @@ class App {
 
         button.addEventListener('click', () => {
             this.showNotification(
-                'La funcionalidad de cambio de contrasena se conecta desde la API /change-password.',
+                `La funcionalidad se conecta al endpoint ${this.toRoute('/api.php?path=change-password')}.`,
                 'info'
             );
         });
@@ -95,7 +118,7 @@ class App {
         const response = await fetch(url, mergedOptions);
 
         if (response.status === 401) {
-            window.location.href = '/login.php';
+            window.location.href = this.toRoute('/login.php');
             return null;
         }
 

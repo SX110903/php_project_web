@@ -14,7 +14,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/forgot-password.php" method="POST" class="auth-form" id="forgotPasswordForm">
+        <form action="<?= $routeBase ?>/forgot-password.php" method="POST" class="auth-form" id="forgotPasswordForm">
             <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
 
             <div class="form-group">
@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-links">
-                <a href="/login.php">Volver al inicio de sesion</a>
+                <a href="<?= $routeBase ?>/login.php">Volver al inicio de sesion</a>
             </div>
         </form>
     </div>
